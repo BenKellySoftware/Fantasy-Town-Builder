@@ -10,4 +10,16 @@ public static class Utilities {
 		}
 		return sum;
 	}
+
+	public static Map map {
+		get {
+			return GameObject.Find("Map").GetComponent<Map>();
+		}
+	}
+
+	public static MouseInput input {
+		get {
+			return GameObject.Find("Main Camera").GetComponent<MouseInput>();
+		}
+	}
 }

@@ -42,28 +42,6 @@ public class Map : MonoBehaviour {
 		}
 	}
 
-	public void PlaceBuilding(Vector3 point) {
-		Coordinates pos = CoordsByWorldPos(point);
-		Hex hex = FindHex(pos.x, pos.y);
-		if (hex == null || hex.building != null) {
-			selectedBuilding.SetActive(false);
-			return;
-		}
-		selectedBuilding.SetActive(true);
-		selectedBuilding.transform.position = new Vector3(hex.WorldSpace.x, point.y + 0.2f, hex.WorldSpace.y);
-		if (!selectedBuilding.GetComponent<Building>().ValidHex(hex)) {
-			selectedBuilding.GetComponent<Renderer>().material.color = Color.red;
-			return;
-		}
-		selectedBuilding.GetComponent<Renderer>().material.color = Color.white;
-		if (Input.GetMouseButtonDown(0)) {
-			Debug.Log("Place");
-			GameObject placedBuilding = Instantiate(selectedBuilding, selectedBuilding.transform.position, selectedBuilding.transform.rotation);
-			hex.building = placedBuilding;
-			placedBuilding.GetComponent<Building>().Setup(GameObject.Find("Potatos").GetComponent<ResourceType>());
-		}
-	}
-
 	public Hex FindHex(int x, int y) {
 		if (x < 0 || y < 0 || x >= width || y >= height) {
 			return null;

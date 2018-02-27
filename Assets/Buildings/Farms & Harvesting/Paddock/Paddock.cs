@@ -10,6 +10,4 @@ public class Paddock : Zone {
 		base.Start();
 		Debug.Log("This is a Paddock");
 	}
-
-	//
 }

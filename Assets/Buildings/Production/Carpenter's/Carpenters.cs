@@ -10,8 +10,19 @@ public class Carpenters : Building {
 	}
 
 	//Set to produce either Arcane focuses, Weapons, or Instruments
-	//Staves:
+	//Staff, Light Weapon:
 	//	Requires 2 lumber
-	//	Worth 2 + value * 2 (
+	//	Worth 3 + supplies * 1.5 (min 12, max 33)
+	//Wand:
+	//	Requires 1 lumber 1 gemstone
+	//	Worth 2 + supplies * 1.5 (min 22, max 107)
+	//Flute:
+	//	Requires 2 lumber
+	//Drum:
+	//	Requires 1 lumber, 1 leather
+	//Bow, Lute:
+	//	Requires 1 lumber, 1 string
+	//Arrows:
+	//	Requires 1 lumber, 1 feathers, 1 metal (optional)
 
 }

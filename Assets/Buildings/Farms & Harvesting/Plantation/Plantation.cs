@@ -9,13 +9,12 @@ public class Plantation : Zone {
 	public int harvestTime = 10;
 	public int yieldAmount = 6;
 
-	public override void Start() {
-		base.Start();
+	public void Init(ResourceType type) {
 		Debug.Log("This is a Plantation");
+		this.type = type;
 	}
 
-	public override void Setup(ResourceType type) {
-		this.type = type;
+	public override void Build() {
 		this.name = type.singular + " Farm";
 		if (type.name == "Flax" || type.name == "Hemp") {
 			yieldAmount = 3;

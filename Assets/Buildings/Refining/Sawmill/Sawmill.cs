@@ -17,5 +17,5 @@ public class Sawmill : Building {
 
 	//Makes Lumber from Wood:
 	//1 Wood per Lumber, Takes 8 units to make per worker, 2 gold profit (0.25 gold/unit)
-	//Takes up to 4 workers
+	//Takes up to 6 workers
 }

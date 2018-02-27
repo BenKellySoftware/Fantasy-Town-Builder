@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4722607132798830}
   - component: {fileID: 33712102256574186}
   - component: {fileID: 23089095658803626}
-  - component: {fileID: 114887176615636388}
+  - component: {fileID: 114324498394736250}
   m_Layer: 0
   m_Name: Dock
   m_TagString: Untagged
@@ -56,7 +56,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 9dd1deca70eca9b44be1ade9f749405d, type: 2}
+  - {fileID: 2100000, guid: ea8451a0d7df9be4fa536acd15cffee3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -83,7 +83,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1058817478453396}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &114887176615636388
+--- !u!114 &114324498394736250
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -91,6 +91,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 1058817478453396}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58249c3a0e620e44196876aab42228e0, type: 3}
+  m_Script: {fileID: 11500000, guid: ced7b92ecb1cc644ca2ce2acf1988954, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
