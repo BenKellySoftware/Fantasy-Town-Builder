@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraControl : MonoBehaviour {
 
-	[Range(1, 20f)]
+	[Range(1, 100)]
 	public int moveSpeed = 2;
 	public int scrollSpeed  = 10;
 
@@ -13,15 +13,11 @@ public class CameraControl : MonoBehaviour {
 	void Start() {
 		rb = GetComponent<Rigidbody>();
 	}
-	
+
 	// Update is called once per frame
 	void Update() {
-		//Vector3 velocity = transform.TransformDirection(new Vector3(Input.GetAxis("Horizontal") * transform.position.y, -Input.GetAxis("Mouse ScrollWheel") * scrollSpeed, Input.GetAxis("Vertical") * transform.position.y));
-		Vector3 velocity = new Vector3(Input.GetAxis("Horizontal") * transform.position.y, -Input.GetAxis("Mouse ScrollWheel") * scrollSpeed, Input.GetAxis("Vertical") * transform.position.y);
-
-		//if (acceleration.magnitude > 1) {
-		//	acceleration.Normalize();
-		//}
-		rb.velocity = velocity;
+		Vector3 acceleration = transform.TransformDirection(new Vector3(Input.GetAxis("Horizontal") * moveSpeed * 2, Input.GetAxis("Vertical") * moveSpeed / Mathf.Cos(Mathf.Deg2Rad * transform.eulerAngles.x), (Input.GetAxis("Zoom") * scrollSpeed) + (Input.GetAxis("Vertical") * moveSpeed / Mathf.Sin(Mathf.Deg2Rad * transform.eulerAngles.x))));
+		transform.eulerAngles += new Vector3(0,Input.GetAxis("Camera Rotate"),0);
+		rb.AddForce(acceleration);
 	}
 }
