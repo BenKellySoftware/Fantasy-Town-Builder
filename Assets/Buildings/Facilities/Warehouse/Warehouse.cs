@@ -9,5 +9,4 @@ public class Warehouse : Building {
 		base.Start();
 		Debug.Log("This is a Warehouse");
 	}
-
 }

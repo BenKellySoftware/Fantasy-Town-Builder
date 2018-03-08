@@ -89,7 +89,7 @@ public class Hex {
 		this.building = null;
 	}
 
-	public Vector2 WorldSpace {
+	public Vector2 worldSpace {
 		/*Using an Axil system with y at pos 1 and x at pos 2 (up and top right)
 		  Each hex y adds one height unit to world y, while each hex x adds 3/4
 		  width unit to world x, and half a height unit to world y.

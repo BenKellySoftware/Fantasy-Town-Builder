@@ -9,8 +9,4 @@ public class House : Building {
 		base.Start();
 		Debug.Log("This is a House");
 	}
-
-	public override bool ValidHex(Hex hex) {
-		return hex.terrain == (int)TerrainTypes.Clearing;
-	}
 }

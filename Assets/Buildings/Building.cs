@@ -21,7 +21,7 @@ public class Building : MonoBehaviour {
 			return;
 		}
 		gameObject.SetActive(true);
-		transform.position = new Vector3(hex.WorldSpace.x, point.y + 0.2f, hex.WorldSpace.y);
+		transform.position = new Vector3(hex.worldSpace.x, point.y + 0.2f, hex.worldSpace.y);
 		//if (!ValidHex(hex)) {
 		//	GetComponent<Renderer>().material.color = Color.red;
 		//	return;
@@ -37,6 +37,9 @@ public class Building : MonoBehaviour {
 	}
 
 	public virtual void Build() {
-		Debug.Log("Default");
+	}
+
+	public virtual void Work() {
+		Debug.Log("Work");
 	}
 }
