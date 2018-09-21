@@ -19,9 +19,12 @@ public class MouseInput : MonoBehaviour {
 		Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
 		RaycastHit hit;
 		if (Physics.Raycast(ray, out hit)) {
-			if (hit.collider.CompareTag("Terrain") && selectedBuilding != null) {
-				selectedBuilding.GetComponent<Building>().Place(hit.point);
-			} else if (hit.collider.CompareTag("Selector") && Input.GetMouseButtonDown(0)) {
+			// A hex is hit while placing a building
+			if (hit.collider.GetComponent<Hex>() != null && selectedBuilding != null) {
+				selectedBuilding.GetComponent<Building>().Place(hit.collider.GetComponent<Hex>());
+			}
+			// Click on a building selector
+			else if (hit.collider.CompareTag("Selector") && Input.GetMouseButtonDown(0)) {
 				hit.collider.GetComponent<BuildingSelect>().Select();
 			}
 		}

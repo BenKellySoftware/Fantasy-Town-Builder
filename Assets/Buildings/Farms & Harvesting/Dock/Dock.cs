@@ -12,10 +12,10 @@ public class Dock : Pathway {
 	public override bool ValidHex(Hex hex) {
 		foreach (Hex neighbour in hex.neighbours) {
 			//Returns true if on the shore or if next to exsisting docks
-			if (neighbour != null && neighbour.building != null && neighbour.building.name == "Dock" && hex.terrain == (int)TerrainTypes.Coast) {
+			if (neighbour != null && neighbour.building != null && neighbour.building.name == "Dock" && hex.terrain == TerrainType.Coast) {
 				return true;
 			}
 		}
-		return hex.terrain == (int)TerrainTypes.Shore;
+		return hex.terrain == TerrainType.Shore;
 	}
 }

@@ -12,7 +12,7 @@ public class Sawmill : Building {
 	}
 
 	public override bool ValidHex(Hex hex) {
-		return hex.terrain == (int)TerrainTypes.Shore;
+		return hex.terrain == TerrainType.Shore;
 	}
 
 	//Makes Lumber from Wood:

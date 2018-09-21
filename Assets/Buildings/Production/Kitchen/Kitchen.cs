@@ -10,6 +10,6 @@ public class Kitchen : Building {
 	}
 
 	public override bool ValidHex(Hex hex) {
-		return hex.terrain == (int)TerrainTypes.Clearing;
+		return hex.terrain == TerrainType.Clearing;
 	}
 }

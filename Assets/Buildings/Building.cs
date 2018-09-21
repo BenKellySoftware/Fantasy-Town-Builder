@@ -10,18 +10,18 @@ public class Building : MonoBehaviour {
 	}
 
 	public virtual bool ValidHex(Hex hex) {
-		return hex.terrain == (int)TerrainTypes.Clearing;
+		return hex.terrain == TerrainType.Clearing;
 	}
 
-	public virtual void Place(Vector3 point) {
-		Coordinates pos = Map.CoordsByWorldPos(point);
-		Hex hex = Utilities.map.FindHex(pos.x, pos.y);
+	public virtual void Place(Hex hex) {
 		if (hex == null || hex.building != null || !ValidHex(hex)) {
 			gameObject.SetActive(false);
 			return;
 		}
+
 		gameObject.SetActive(true);
-		transform.position = new Vector3(hex.worldSpace.x, point.y + 0.2f, hex.worldSpace.y);
+
+		transform.position = new Vector3(hex.transform.position.x, hex.transform.position.y + 0.2f, hex.transform.position.z);
 		//if (!ValidHex(hex)) {
 		//	GetComponent<Renderer>().material.color = Color.red;
 		//	return;

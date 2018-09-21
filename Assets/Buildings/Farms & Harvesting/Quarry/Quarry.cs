@@ -10,6 +10,6 @@ public class Quarry : Building {
 	}
 
 	public override bool ValidHex(Hex hex) {
-		return hex.terrain == (int)TerrainTypes.MountainSide;
+		return hex.terrain == TerrainType.MountainSide;
 	}
 }

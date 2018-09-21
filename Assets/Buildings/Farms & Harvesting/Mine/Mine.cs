@@ -10,7 +10,7 @@ public class Mine : Building {
 	}
 
 	public override bool ValidHex(Hex hex) {
-		return hex.terrain == (int)TerrainTypes.MountainSide;
+		return hex.terrain == TerrainType.MountainSide;
 	}
 
 	//Upgrade to go deeper in the mine to increase chances
