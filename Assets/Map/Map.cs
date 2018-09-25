@@ -1,47 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.IO;
 
 public class Map : MonoBehaviour {
-	public GameObject hexObject;
+	public GameObject islandObject;
 
-	public int width = 10;
-	public int height = 10;
-	public Hex[,] hexes;
+	public int width = 20;
+	public int height = 20;
 
 	void Start () {
-		hexes = new Hex[width, height];
-		for (int x = 0; x < width; x++) {
-			for (int y = 0; y < height; y++) {
-				//Template terrain setup
-				TerrainType terrain = TerrainType.Clearing;
-				if(x < 5) {
-					terrain = TerrainType.Shore;
-				} if(x == 5) {
-					terrain = TerrainType.Coast;
-				} if(y == 0) {
-					terrain = TerrainType.MountainSide;
-				} if(x == 74 || y == 74) {
-					terrain = TerrainType.ForestEdge;
-				}
-				Hex hex = Instantiate(hexObject).GetComponent<Hex>();
-				hex.Init(x, y, terrain);
-				hexes[x,y] = hex;
+		Coordinates islandPos;
+		for (islandPos.x = 0; islandPos.x < width; islandPos.x += 4) {
+			for (islandPos.y = 0; islandPos.y < height; islandPos.y += 4) {
+				Island island = Instantiate(islandObject).GetComponent<Island>();
+				//Set to be child
+				island.transform.SetParent(transform);
+				island.Init(islandPos);
 			}
 		}
-	}
-
-	public Hex FindHex(int x, int y) {
-		if (x < 0 || y < 0 || x >= width || y >= height) {
-			return null;
-		}
-		return hexes[x, y];
-	}
-
-	public static Coordinates CoordsByWorldPos(Vector3 worldPos) {
-		int x = Mathf.CeilToInt(worldPos.z + (worldPos.x / Mathf.Sqrt(3)) - 0.5f);
-		int y = Mathf.CeilToInt(worldPos.z - (worldPos.x / Mathf.Sqrt(3)) - 0.5f);
-		return new Coordinates(x, y);
 	}
 }

@@ -23,3 +23,23 @@ public static class Utilities {
 		}
 	}
 }
+
+[System.Serializable]
+public struct Coordinates {
+	public int x, y;
+
+	public override string ToString() {
+		return "x: " + x + ", y: " + y;
+	}
+}
+
+public enum TerrainType {
+	Clearing,
+	ForestEdge,
+	Forest,
+	Coast,
+	Shore,
+	Sea,
+	Mountain,
+	MountainSide
+};
