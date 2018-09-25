@@ -10,12 +10,12 @@ public class MouseInput : MonoBehaviour {
 	public GameObject selectedBuilding;
 
 	// Use this for initialization
-	void Start () {
+	void Start() {
 		mainCamera = GetComponent<Camera>();
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update() {
 		Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
 		RaycastHit hit;
 		if (Physics.Raycast(ray, out hit)) {

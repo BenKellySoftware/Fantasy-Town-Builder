@@ -25,7 +25,7 @@ public static class Utilities {
 }
 
 [System.Serializable]
-public struct Coordinates {
+public struct Tuple {
 	public int x, y;
 
 	public override string ToString() {

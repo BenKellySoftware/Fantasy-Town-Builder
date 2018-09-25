@@ -141,8 +141,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   islandObject: {fileID: 1558812597866408, guid: 46fe7f81be7ed6d45b9d390887329404,
     type: 2}
-  width: 20
-  height: 20
+  width: 80
+  height: 80
 --- !u!4 &168639981
 Transform:
   m_ObjectHideFlags: 0

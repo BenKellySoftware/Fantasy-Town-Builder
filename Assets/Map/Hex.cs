@@ -4,7 +4,7 @@ using UnityEngine;
 using System.IO;
 
 public class Hex : MonoBehaviour {
-	public Coordinates pos;
+	public Tuple pos;
 	public TerrainType terrain;
 	public GameObject building;
 
@@ -22,7 +22,7 @@ public class Hex : MonoBehaviour {
 		}
 	}
 
-	public void Init(Coordinates pos, TerrainType terrain) {
+	public void Init(Tuple pos, TerrainType terrain) {
 		this.pos = pos;
 		this.terrain = terrain;
 		this.building = null;
@@ -32,5 +32,14 @@ public class Hex : MonoBehaviour {
 		  The height to 3/4 width conversion is sqrt(3)/2, found via weird math.
 		*/
 		transform.localPosition = new Vector3((this.pos.x - this.pos.y) * Mathf.Sqrt(3), 0, (this.pos.y + this.pos.x));
+	}
+
+	public Tuple gloabalPos {
+		get { 
+			return new Tuple {
+				x = transform.parent.GetComponent<Island>().pos.x + pos.x,
+				y = transform.parent.GetComponent<Island>().pos.y + pos.y
+			};
+		}
 	}
 }

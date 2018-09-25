@@ -21,7 +21,7 @@ public class Building : MonoBehaviour {
 
 		gameObject.SetActive(true);
 
-		transform.position = new Vector3(hex.transform.position.x, hex.transform.position.y + 0.2f, hex.transform.position.z);
+		transform.position = new Vector3(hex.transform.position.x, hex.transform.position.y + 0.5f, hex.transform.position.z);
 		//if (!ValidHex(hex)) {
 		//	GetComponent<Renderer>().material.color = Color.red;
 		//	return;
