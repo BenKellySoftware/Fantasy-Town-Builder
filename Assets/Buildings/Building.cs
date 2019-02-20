@@ -10,23 +10,23 @@ public class Building : MonoBehaviour {
 	}
 
 	public virtual bool ValidHex(Hex hex) {
-		return hex.terrain == TerrainType.Clearing;
+		return hex.Terrain == TerrainType.Clearing;
 	}
 
 	public virtual void Place(Hex hex) {
-		if (hex == null || hex.building != null || !ValidHex(hex)) {
+		if (hex == null || hex.building != null) {
 			gameObject.SetActive(false);
 			return;
 		}
 
 		gameObject.SetActive(true);
 
-		transform.position = new Vector3(hex.transform.position.x, hex.transform.position.y + 0.5f, hex.transform.position.z);
-		//if (!ValidHex(hex)) {
-		//	GetComponent<Renderer>().material.color = Color.red;
-		//	return;
-		//}
-		//GetComponent<Renderer>().material.color = Color.white;
+		transform.position = new Vector3(hex.transform.position.x, hex.transform.position.y + 1.7f, hex.transform.position.z);
+		if (!ValidHex(hex)) {
+			GetComponent<Renderer>().material.color = Color.red;
+			return;
+		}
+		GetComponent<Renderer>().material.color = Color.white;
 		if (Input.GetMouseButtonDown(0)) {
 			Debug.Log("Place");
 			hex.building = gameObject;

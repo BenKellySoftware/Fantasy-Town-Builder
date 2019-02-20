@@ -10,7 +10,7 @@ public class LoggingCamp : Building {
 	}
 
 	public override bool ValidHex(Hex hex) {
-		return hex.terrain == TerrainType.ForestEdge;
+		return hex.Terrain == TerrainType.Forest;
 	}
 
 	//Up to 8 workers, each worker generates a wood every 4 units, 8 if replanting area (0.25 or 0.125 gold/unit)

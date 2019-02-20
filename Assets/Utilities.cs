@@ -25,8 +25,20 @@ public static class Utilities {
 }
 
 [System.Serializable]
-public struct Tuple {
+public struct Position {
 	public int x, y;
+
+	public Position(int x, int y) {
+		this.x = x;
+		this.y = y;
+	}
+
+	public static Position operator+ (Position a, Position b) {
+		return new Position(a.x + b.x, a.y + b.y);
+	}
+	public static Position operator* (Position a, int m) {
+		return new Position(a.x * m, a.y * m);
+	}
 
 	public override string ToString() {
 		return "x: " + x + ", y: " + y;
@@ -34,12 +46,9 @@ public struct Tuple {
 }
 
 public enum TerrainType {
-	Clearing,
-	ForestEdge,
+	Mountains,
 	Forest,
+	Clearing,
 	Coast,
-	Shore,
-	Sea,
-	Mountain,
-	MountainSide
+	Shallows,
 };

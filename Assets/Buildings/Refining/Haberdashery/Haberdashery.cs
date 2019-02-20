@@ -8,8 +8,4 @@ public class Haberdashery : Building {
 		base.Start();
 		Debug.Log("This is a House");
 	}
-
-	public override bool ValidHex(Hex hex) {
-		return hex.terrain == TerrainType.Clearing;
-	}
 }

@@ -51,9 +51,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a8ec4ece6a9e784c956eb2f84c7c1a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hexObject: {fileID: 1376255833800516, guid: faa105c9f2b6afc43bf21308f0ae7afd, type: 2}
-  pos:
-    x: 0
-    y: 0
-  width: 3
-  height: 3
+  HEX_OBJECT: {fileID: 1376255833800516, guid: faa105c9f2b6afc43bf21308f0ae7afd, type: 2}
+  radius: 15

@@ -8,8 +8,4 @@ public class ArtificersLab : Building {
 		base.Start();
 		Debug.Log("This is an Artificer's Lab");
 	}
-
-	public override bool ValidHex(Hex hex) {
-		return hex.terrain == TerrainType.Clearing;
-	}
 }

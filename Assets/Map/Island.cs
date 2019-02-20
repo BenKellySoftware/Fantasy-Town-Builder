@@ -3,38 +3,69 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Island : MonoBehaviour {
-	public GameObject hexObject;
+	public GameObject HEX_OBJECT;
 
-	public Tuple pos;
+	//The max distance any one hex is from the centre, set during init
+	public int radius;
+	//2D Array of hexes in the island, index offset up by radius
 	public Hex[,] hexes;
-	public int width, height;
 
-	public void Init(Tuple pos) {
-		this.pos = pos;
-		transform.localPosition = new Vector3((pos.x - pos.y) * Mathf.Sqrt(3), 0, (pos.y + pos.x));
-		width = Random.Range(5, 10);
-		height = Random.Range(5, 10);
-		hexes = new Hex[width, height];
+	//Position of island centre relative to the map
+	private Position pos;
+	public Position Pos {
+		get { return pos; }
+		set {
+			this.pos.x = value.x;
+			this.pos.y = value.y;
+			transform.localPosition = new Vector3((pos.x - pos.y) * Mathf.Sqrt(3), 0, (pos.y + pos.x));
+		}
+	}
 
-		Tuple hexPos;
-		for (hexPos.x = 0; hexPos.x < width; hexPos.x++) {
-			for (hexPos.y = 0; hexPos.y < height; hexPos.y++) {
-				if (hexPos.y - hexPos.x <= height/2 && hexPos.x - hexPos.y <= width/2) { // Cut off corners
-					Hex hex = Instantiate(hexObject).GetComponent<Hex>();
-					//Set to be child
-					hex.transform.SetParent(transform);
+	public void Init(Position pos, int radius) {
+		this.Pos = pos;
+		this.radius = radius;
 
-					hex.Init(hexPos, TerrainType.Clearing);
-					hexes[hexPos.x,hexPos.y] = hex;
+		float altitude = 2;
+		hexes = new Hex[radius*2+1, radius*2+1];
+
+		hexes[radius, radius] = Instantiate(HEX_OBJECT).GetComponent<Hex>();
+		hexes[radius, radius].transform.SetParent(transform);
+		hexes[radius, radius].Init(new Position(0,0), altitude);
+
+		for (int ring = 1; ring <= radius; ring++) {
+			for (int i = 0; i < 6; i++) { //Each spoke
+				Position hexPos = Map.AXIS_OFFSET[i] * ring;
+				for (int j = 0; j < ring; j++) { //Fill out the ring by drawing around the spokes
+					if (j != 0) {
+						hexPos += Map.AXIS_OFFSET[(i + 2) % 6]; // Move across to the next hex in the ring
+					}
+					//Base the altitude off of the closest inner ring hex
+					Hex innerHex1 = FindHex(hexPos + Map.AXIS_OFFSET[(i + 3) % 6]); //Find inner ring for its altitude
+					if (!innerHex1) continue;
+
+					if (j==0) { //Can only check 1 if on spoke, but both otherwise
+						if(innerHex1.altitude < 0f) continue; //Only create if not already submerged
+						altitude = innerHex1.altitude - Random.Range(0f, 0.4f);
+					} else {
+						Hex innerHex2 = FindHex(hexPos + Map.AXIS_OFFSET[(i + 4) % 6]); //Find inner ring for its altitude
+						if (!innerHex2) continue;
+						if(innerHex1.altitude < 0f && innerHex2.altitude < 0f) continue; //Only create if not already submerged
+
+						altitude = (innerHex1.altitude + innerHex2.altitude)/2 - Random.Range(0f, 0.3f);
+					}
+					hexes[radius + hexPos.x, radius + hexPos.y] = Instantiate(HEX_OBJECT).GetComponent<Hex>();
+					hexes[radius + hexPos.x, radius + hexPos.y].transform.SetParent(transform);
+					hexes[radius + hexPos.x, radius + hexPos.y].Init(hexPos, altitude);
 				}
 			}
 		}
 	}
 
-	public Hex FindHex(int x, int y) {
-		if (x < 0 || y < 0 || x >= width || y >= height) {
+	//Returns hex at relative co-ordinate, first checking it's withing the islands bounds
+	public Hex FindHex(Position pos) {
+		if (pos.x < -radius || pos.y < -radius || pos.x > radius || pos.y > radius) {
 			return null;
 		}
-		return hexes[x, y];
+		return hexes[radius+pos.x, radius+pos.y];
 	}
 }

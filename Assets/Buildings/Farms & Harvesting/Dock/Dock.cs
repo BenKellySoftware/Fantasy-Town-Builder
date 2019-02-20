@@ -10,12 +10,13 @@ public class Dock : Pathway {
 	}
 
 	public override bool ValidHex(Hex hex) {
-		foreach (Hex neighbour in hex.neighbours) {
+		for (int i = 0; i < 6; i++) {
+			Hex neighbour = hex.FindNeighbour(i);
 			//Returns true if on the shore or if next to exsisting docks
-			if (neighbour != null && neighbour.building != null && neighbour.building.name == "Dock" && hex.terrain == TerrainType.Coast) {
+			if (neighbour != null && neighbour.building != null && neighbour.building.name == "Dock" && hex.Terrain == TerrainType.Shallows) {
 				return true;
 			}
 		}
-		return hex.terrain == TerrainType.Shore;
+		return hex.Terrain == TerrainType.Coast;
 	}
 }

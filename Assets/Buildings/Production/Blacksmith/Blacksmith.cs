@@ -8,8 +8,4 @@ public class Blacksmith : Building {
 		base.Start();
 		Debug.Log("This is a Blacksmith");
 	}
-
-	public override bool ValidHex(Hex hex) {
-		return hex.terrain == TerrainType.Clearing;
-	}
 }
