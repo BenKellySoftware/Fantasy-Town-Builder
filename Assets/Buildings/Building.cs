@@ -3,7 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Building : MonoBehaviour {
+
+	public Hex hex;
 	public int buildCost;
+	public Inventory inventory;
+	public List<BuildingAction> actions;
 
 	public virtual void Start() {
 		Debug.Log("Building");
@@ -39,7 +43,10 @@ public class Building : MonoBehaviour {
 	public virtual void Build() {
 	}
 
-	public virtual void Work() {
+	public virtual void Use(Citizen citizen) {
 		Debug.Log("Work");
+		foreach (var action in actions) {
+			action.Use(citizen, inventory);
+		}
 	}
 }

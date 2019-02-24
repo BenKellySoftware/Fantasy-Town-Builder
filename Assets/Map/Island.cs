@@ -29,6 +29,7 @@ public class Island : MonoBehaviour {
 		hexes = new Hex[radius*2+1, radius*2+1];
 
 		hexes[radius, radius] = Instantiate(HEX_OBJECT).GetComponent<Hex>();
+		hexes[radius, radius].name = HEX_OBJECT.name;
 		hexes[radius, radius].transform.SetParent(transform);
 		hexes[radius, radius].Init(new Position(0,0), altitude);
 
@@ -54,6 +55,7 @@ public class Island : MonoBehaviour {
 						altitude = (innerHex1.altitude + innerHex2.altitude)/2 - Random.Range(0f, 0.3f);
 					}
 					hexes[radius + hexPos.x, radius + hexPos.y] = Instantiate(HEX_OBJECT).GetComponent<Hex>();
+					hexes[radius + hexPos.x, radius + hexPos.y].name = HEX_OBJECT.name;
 					hexes[radius + hexPos.x, radius + hexPos.y].transform.SetParent(transform);
 					hexes[radius + hexPos.x, radius + hexPos.y].Init(hexPos, altitude);
 				}

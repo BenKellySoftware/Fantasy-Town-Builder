@@ -22,6 +22,11 @@ public static class Utilities {
 			return GameObject.Find("Main Camera").GetComponent<MouseInput>();
 		}
 	}
+
+	public static float HorizontalDistance(Vector3 a, Vector3 b) {
+		return Mathf.Sqrt(Mathf.Pow(a.x - b.x, 2) + Mathf.Pow(a.z - b.z, 2));
+	}
+
 }
 
 [System.Serializable]

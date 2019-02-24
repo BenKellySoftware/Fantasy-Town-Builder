@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
-using System.IO;
 
+[Serializable]
 public class Hex : MonoBehaviour {
 	public Material[] TERRAIN_MATERIALS;
 
@@ -10,8 +9,13 @@ public class Hex : MonoBehaviour {
 	public float altitude;
 	public GameObject building;
 
-	private TerrainType terrain;
+	public TerrainType terrain;
 	private Island island;
+
+	// Used for pathfinding
+	public Hex cameFrom;
+	public int distanceFrom;
+	public int distanceTo;
 
 	//Requires to be parented by an island
 	public void Init(Position pos, float altitude) {

@@ -5,6 +5,7 @@ using UnityEngine;
 public class MouseInput : MonoBehaviour {
 
 	private Camera mainCamera;
+	public GameObject cursor;
 
 	public Map map;
 	public GameObject selectedBuilding;
@@ -20,11 +21,20 @@ public class MouseInput : MonoBehaviour {
 		RaycastHit hit;
 		if (Physics.Raycast(ray, out hit)) {
 			// A hex is hit while placing a building
-			if (hit.collider.GetComponent<Hex>() != null && selectedBuilding != null) {
-				selectedBuilding.GetComponent<Building>().Place(hit.collider.GetComponent<Hex>());
+			if (hit.collider.GetComponent<Hex>() != null) {
+				cursor.SetActive(true);
+				Hex hex = hit.collider.GetComponent<Hex>();
+				cursor.transform.position = new Vector3(hex.transform.position.x, hex.transform.position.y + 1.45f, hex.transform.position.z);
+				if (selectedBuilding != null) {
+					selectedBuilding.GetComponent<Building>().Place(hex);
+				} else if (Input.GetMouseButtonDown(0)) {
+					GameObject.Find("Little Lad").GetComponent<Citizen>().StartCoroutine("Travel", hex);
+				}
+			} else {
+				cursor.SetActive(false);
 			}
 			// Click on a building selector
-			else if (hit.collider.CompareTag("Selector") && Input.GetMouseButtonDown(0)) {
+			if (hit.collider.CompareTag("Selector") && Input.GetMouseButtonDown(0)) {
 				hit.collider.GetComponent<BuildingSelect>().Select();
 			}
 		}
