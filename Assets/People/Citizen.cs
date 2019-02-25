@@ -31,9 +31,11 @@ public class Citizen : MonoBehaviour {
 
 	public Inventory inventory;
 
+	Building road;
 	void Start() {
 		animator = GetComponent<Animator>();
 		rest = 50;
+		road = GameObject.Find("Map").GetComponent<Map>().road;
 	}
 
 	IEnumerator Travel(Hex destination) {
@@ -46,7 +48,7 @@ public class Citizen : MonoBehaviour {
 			float jumpDiff = hex.altitude - position.altitude;
 			float distance = 2;
 			do { // Travels 2 units each hex, so e
-				transform.Translate(new Vector3(0,0,2*Time.deltaTime*tickSpeed));// Move 1 hex per tickspeed
+				transform.Translate(new Vector3(0,0,2*Time.deltaTime*tickSpeed*(hex.building==road?0.75f:1)));// Move 1 hex per tickspeed
 				distance = Utilities.HorizontalDistance(transform.position, hex.transform.position);
 				Debug.Log(jumpDiff);
 				float scale = squashAndStretch.Evaluate(1 - distance / 2) * Mathf.Abs(jumpDiff) / 2;

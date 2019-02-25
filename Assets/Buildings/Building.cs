@@ -14,7 +14,7 @@ public class Building : MonoBehaviour {
 	}
 
 	public virtual bool ValidHex(Hex hex) {
-		return hex.Terrain == TerrainType.Clearing;
+		return true;// hex.Terrain == TerrainType.Clearing;
 	}
 
 	public virtual void Place(Hex hex) {

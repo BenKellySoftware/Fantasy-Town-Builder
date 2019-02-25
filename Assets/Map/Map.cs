@@ -21,6 +21,9 @@ public class Map : MonoBehaviour {
 	public int islandSpacingMax = 10;
 	public List<Island> islands;
 
+	public Building road;
+	public int roadBias;
+
 	public MapType mapType;
 	public enum MapType {
 		Islands,
@@ -102,10 +105,11 @@ public class Map : MonoBehaviour {
 
 			for (int j = 0; j < 6; j++) { //Each neighbour
 				Hex neighbour = islands[0].FindHex(frontier[i].pos + Map.AXIS_OFFSET[j]);
+				//if (neighbour.building != null || neighbour.Terrain == TerrainType.Shallows) break;
 
 				if (neighbour != null && !frontier.Contains(neighbour)) {
 					neighbour.cameFrom = frontier[i];
-					neighbour.distanceFrom = frontier[i].distanceFrom + 1;
+					neighbour.distanceFrom = frontier[i].distanceFrom + (neighbour.building == road ? roadBias : 1);
 					neighbour.distanceTo = GetDistance(neighbour.pos, destination.pos);
 					frontier.Add(neighbour);
 				}
