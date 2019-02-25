@@ -37,7 +37,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4953955757638786}
   - component: {fileID: 114410911734785190}
-  - component: {fileID: 95799590655915072}
   m_Layer: 0
   m_Name: Citizen
   m_TagString: Untagged
@@ -85,13 +84,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1693273073366320}
-  m_LocalRotation: {x: 1, y: 0, z: 0, w: 0}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0.1, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 4953955757638786}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!4 &4743239865977072
 Transform:
   m_ObjectHideFlags: 1
@@ -257,23 +256,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1693273073366320}
   m_Mesh: {fileID: 4300000, guid: c28554ada6865f94eb64db896ea038d9, type: 3}
---- !u!95 &95799590655915072
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1338977053779124}
-  m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f62bceb2e2eac0d48911438c7940ed52, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114410911734785190
 MonoBehaviour:
   m_ObjectHideFlags: 1

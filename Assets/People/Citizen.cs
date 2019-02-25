@@ -12,7 +12,7 @@ public class Citizen : MonoBehaviour {
 
 	public int gold;
 
-	private bool discontent = false; //Triggers if any meter gets too low, lowers productivity
+	//private bool discontent = false; //Triggers if any meter gets too low, lowers productivity
 	public Hex position; // Current position based on hex co-ordinates
 	private float tickSpeed = 1f; // How often a tick occurs
 
@@ -20,7 +20,6 @@ public class Citizen : MonoBehaviour {
 	public Building job;
 	private Building target; //The building currently being operated on
 
-	private Animator animator;
 
 	public AnimationCurve squashAndStretch;
 	public AnimationCurve headAndHat;
@@ -32,7 +31,6 @@ public class Citizen : MonoBehaviour {
 	public Inventory inventory;
 
 	void Start() {
-		animator = GetComponent<Animator>();
 		rest = 50;
 	}
 
@@ -48,7 +46,6 @@ public class Citizen : MonoBehaviour {
 			do { // Travels 2 units each hex, so e
 				transform.Translate(new Vector3(0,0,2*Time.deltaTime*tickSpeed));// Move 1 hex per tickspeed
 				distance = Utilities.HorizontalDistance(transform.position, hex.transform.position);
-				Debug.Log(jumpDiff);
 				float scale = squashAndStretch.Evaluate(1 - distance / 2) * Mathf.Abs(jumpDiff) / 2;
 				transform.localScale = new Vector3(1 + scale, 1 - scale ,1 + scale);
 				float height = headAndHat.Evaluate(1 - distance / 2) * Mathf.Abs(jumpDiff) / 2;
