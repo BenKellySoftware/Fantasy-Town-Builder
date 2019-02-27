@@ -7,9 +7,9 @@ public class Hex : MonoBehaviour {
 
 	public Position pos;
 	public float altitude;
-	public GameObject building;
-
 	public TerrainType terrain;
+	public Structure structure;
+
 	private Island island;
 
 	// Used for pathfinding
@@ -21,7 +21,7 @@ public class Hex : MonoBehaviour {
 	public void Init(Position pos, float altitude) {
 		this.pos = pos;
 		this.altitude = altitude;
-		this.building = null;
+		this.structure = null;
 		this.island = transform.parent.GetComponent<Island>();
 
 		if (altitude < 0) {

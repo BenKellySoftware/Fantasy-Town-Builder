@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 0}
-  m_Name: Fruit
-  m_EditorClassIdentifier: Assembly-CSharp::ResourceType
-  category: 1
-  baseValue: 1
+  m_Name: Water Source
+  m_EditorClassIdentifier: Assembly-CSharp::OnAndAdjacent
+  validTerrain: 0300000004000000
+  validAdjacent: 05000000

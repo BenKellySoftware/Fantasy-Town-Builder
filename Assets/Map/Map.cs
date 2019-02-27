@@ -42,9 +42,6 @@ public class Map : MonoBehaviour {
 		}
 	}
 
-	//TODO: DEBUG LIST, TO REMOVE
-	public List<Hex> path;
-
 	private void GenIslands() {
 		Island island = Instantiate(ISLAND_OBJECT).GetComponent<Island>();
 		island.name = ISLAND_OBJECT.name;

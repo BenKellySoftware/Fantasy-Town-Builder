@@ -18,8 +18,7 @@ public class Citizen : MonoBehaviour {
 
 	public Building home;
 	public Building job;
-	private Building target; //The building currently being operated on
-
+	private Building target;
 
 	public AnimationCurve squashAndStretch;
 	public AnimationCurve headAndHat;

@@ -3,23 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public static class Utilities {
-	public static int ResourceCount(List<Resource> storage) {
-		int sum = 0;
-		foreach (Resource resource in storage) {
-			sum += resource.count;
-		}
-		return sum;
-	}
+	public const float ALTITUDE_MAX = 2f;
+	public const float ALTITUDE_DIFF_MAX = 0.3f;
 
 	public static Map map {
 		get {
 			return GameObject.Find("Map").GetComponent<Map>();
-		}
-	}
-
-	public static MouseInput input {
-		get {
-			return GameObject.Find("Main Camera").GetComponent<MouseInput>();
 		}
 	}
 
@@ -51,9 +40,16 @@ public struct Position {
 }
 
 public enum TerrainType {
+	DeepForest, // Unscouted areas 
+	Forest, // Forrest edge or scouted areas
 	Mountains,
-	Forest,
 	Clearing,
 	Coast,
 	Shallows,
 };
+
+public enum GameSpeed {
+	Pause = 0,
+	Normal = 1,
+	Fast = 2
+}

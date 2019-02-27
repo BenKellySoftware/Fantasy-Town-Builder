@@ -1,14 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
-public class Rest : BuildingAction {
-
+public class Build : BuildingAction {
 	public override bool Available(Citizen user, Building building) {
-		return user.rest < 50;
+		return true;
 	}
 
 	public override void Use(Citizen user, Building building) {
-		user.rest++;
+		
 	}
 }
