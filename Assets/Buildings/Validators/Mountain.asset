@@ -10,8 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 0}
-  m_Name: Vegetable
-  m_EditorClassIdentifier: Assembly-CSharp::ResourceType
-  category: 1
-  baseValue: 1
-  inputMultiplier: 0
+  m_Name: Mountain
+  m_EditorClassIdentifier: Assembly-CSharp::SpecificTerrain
+  validTerrain: 02000000

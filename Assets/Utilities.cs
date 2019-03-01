@@ -30,6 +30,7 @@ public struct Position {
 	public static Position operator+ (Position a, Position b) {
 		return new Position(a.x + b.x, a.y + b.y);
 	}
+
 	public static Position operator* (Position a, int m) {
 		return new Position(a.x * m, a.y * m);
 	}

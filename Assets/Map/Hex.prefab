@@ -106,9 +106,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TERRAIN_MATERIALS:
+  - {fileID: 2100000, guid: a1cda9019b926914c82ecaaefced4a04, type: 2}
+  - {fileID: 2100000, guid: a1cda9019b926914c82ecaaefced4a04, type: 2}
   - {fileID: 2100000, guid: d4cbf6742115def49b8ff94594967365, type: 2}
-  - {fileID: 2100000, guid: a1cda9019b926914c82ecaaefced4a04, type: 2}
-  - {fileID: 2100000, guid: a1cda9019b926914c82ecaaefced4a04, type: 2}
   - {fileID: 2100000, guid: 0f45712c5af0e3349befe57c4b9b6955, type: 2}
   - {fileID: 2100000, guid: 29b5f51686b181047a398f0ef9efe735, type: 2}
   - {fileID: 2100000, guid: b276bd8a121cfef4897e6ab4a8f1b4be, type: 2}

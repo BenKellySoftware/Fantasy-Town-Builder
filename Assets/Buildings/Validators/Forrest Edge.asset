@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: Water Source
-  m_EditorClassIdentifier: Assembly-CSharp::OnAndAdjacent
-  validTerrain: 0300000004000000
-  validAdjacent: 05000000
+  m_Script: {fileID: 11500000, guid: 3a90835e2a2bf8046be671fdd4915a92, type: 3}
+  m_Name: Forrest Edge
+  m_EditorClassIdentifier: 
+  validTerrain: 01000000
+  validAdjacent: 0300000001000000

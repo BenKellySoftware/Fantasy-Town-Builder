@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Controls : MonoBehaviour {
 
@@ -13,12 +14,12 @@ public class Controls : MonoBehaviour {
 	public Map map;
 	private static Rigidbody rb;
 	private static Camera mainCamera;
-	private static Hex hoveredHex = null;
 
 	private static Building _selectedBuilding;
 	public static Building selectedBuilding {
 		get { return _selectedBuilding; }
 		set { 
+			Debug.Log("Selecting " + value.name);
 			if (_selectedBuilding) {
 				Destroy(_selectedBuilding);
 			}
@@ -42,31 +43,31 @@ public class Controls : MonoBehaviour {
 
 		if (Input.GetButtonDown("Cancel")) {
 			if (selectedBuilding != null) {
-				Destroy(selectedBuilding);	
+				Destroy(selectedBuilding);
 			}
+		}
+
+		if (EventSystem.current.IsPointerOverGameObject()) {
+			cursor.SetActive(false);
+			return;
 		}
 
 		Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
 		RaycastHit hit;
 		if (Physics.Raycast(ray, out hit)) {
-			// A hex is hit while placing a building
-
 			Hex hex = hit.collider.GetComponent<Hex>();
-			if (hex != hoveredHex || Input.GetMouseButtonDown(0)) { //Only call on a changed select or a click
-				hoveredHex = hex;
-				if (hex != null) {
-					cursor.SetActive(true);
-					cursor.transform.position = new Vector3(hex.transform.position.x, hex.transform.position.y + 1.45f, hex.transform.position.z);
+			if (hex != null) {
+				cursor.SetActive(true);
+				cursor.transform.position = new Vector3(hex.transform.position.x, hex.transform.position.y + 1.45f, hex.transform.position.z);
 
-					if (selectedBuilding != null) {
-						selectedBuilding.Place(hex);
-					} else { //Select tile for ui info
-						GameObject.Find("Little Lad").GetComponent<Citizen>().StartCoroutine("Travel", hex);
-					}
-
-				} else { // Not on hex
-					cursor.SetActive(false);
+				if (selectedBuilding != null) {
+					selectedBuilding.Place(hex);
+				} else if (Input.GetMouseButtonDown(0)) { //Select tile for ui info
+					GameObject.Find("Little Lad").GetComponent<Citizen>().StartCoroutine("Travel", hex);
 				}
+
+			} else { // Not on hex
+				cursor.SetActive(false);
 			}
 		}
 
